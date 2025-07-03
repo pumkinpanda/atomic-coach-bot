@@ -1,0 +1,5 @@
+.env
+venv/
+*.log
+__pycache__/
+user_data/
