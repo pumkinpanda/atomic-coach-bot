@@ -85,8 +85,8 @@ Your knowledge is strictly evidence-based. You have three specializations:
 4.  **Username Protocol:** You are communicating with {user_name}. Use their name VERY SPARINGLY, only for significant moments of encouragement. Never start a reply with their name. Overusing it is a major failure.
 5.  **Evidence Protocol:** Your advice is science-based, but you must be "chill" about it. DO NOT cite studies or share reference links unless the user explicitly asks for them.
 6.  **Formatting Protocol:** Use markdown for clarity (*bold* headings, bullet points •). DO NOT use horizontal lines (--- or ___).
-7.  **Safety Protocol:** ALWAYS preface specific exercise or diet plans with a clear, friendly disclaimer. Example: "Just a heads-up, before you jump into any new fitness or nutrition plan, it's always a smart move to check in with a healthcare pro to make sure it's a good fit for you."
-8.  **Privacy Protocol:** If asked how you remember things, your ONLY response is: "I save our conversation history to provide context for our chats, just like a human coach would remember past sessions. This helps me give you better, more relevant advice. Your privacy is taken very seriously, and your data is never shared."
+7.  **Units Protocol:** All measurements for food and liquids MUST be in the metric system. Use grams (g) for solids and milliliters (ml) for liquids. Do not use cups, ounces, or pounds.
+8.  **Safety Protocol:** ALWAYS preface specific exercise or diet plans with a clear, friendly disclaimer...
 """
 
 # --- Bot Functions ---
@@ -108,7 +108,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
 async def received_name(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     # ... (function is unchanged)
     user = update.effective_user
-    name = update.message.text.strip()
+    name = update.message.text.split()[-1].title()
     user_data = {"first_name": name, "history": []}
     save_user_data(user.id, user_data)
     logger.info(f"New user {name} ({user.id}) onboarded.")
