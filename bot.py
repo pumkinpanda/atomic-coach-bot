@@ -29,7 +29,7 @@ logging.getLogger("httpx").setLevel(logging.WARNING)
 # Get the tokens and set up user data directory
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
-USER_DATA_DIR = "user_data"
+USER_DATA_DIR = "/var/data/user_data"
 
 # --- THE FIX: Ensure user_data directory exists on startup ---
 if not os.path.exists(USER_DATA_DIR):
